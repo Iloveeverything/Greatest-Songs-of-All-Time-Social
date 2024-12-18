@@ -12,7 +12,7 @@ const uri = "mongodb+srv://thurstlic7:chickenandwafflesarethebest@teamscratch.li
 mongoose.connect(uri)
 .then(() => {
     console.log('Connected to MongoDB everybody');
-    app.listen(8080, () =>{
+    app.listen(3000, () =>{
         console.log('Server is running on port 3000')
     })
 })
