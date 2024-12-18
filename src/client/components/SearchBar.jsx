@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import { FaMagnifyingGlass } from 'react-icons/fa6'; // Importing a search icon from react-icons
 import './SearchBar.css'; // Importing the CSS file for styling
-import './Playlist';
-const SearchBar = () => {
-  // Functional component for a search bar
-  const [input, setInput] = useState(''); // State to handle the input value
 
-  //   console.log(input);
-  // Function to fetch data based on the input value
-  const getMusic = async (value) => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  };
+const SearchBar = ({ onSearchResults }) => {
+  const [input, setInput] = useState('');
 
-  const handleChange = (value) => {
-    setInput(value);
-    getMusic(value);
-  };
+  useEffect(() => {
+    const fetchSearchResults = async () => {
+        onSearchResults([]); // Clear search results when input is empty
+        return;
+      }
+
+      try {
+        const response = await fetch(`/playlist/${encodeURIComponent(input)}`);
+        const data = await response.json();
+        onSearchResults(data.songs); // Pass search results to the parent component
+      } catch (error) {
+        console.error('Error fetching search results:', error);
+      }
+    };
+
+    const debounceTimeout = setTimeout(fetchSearchResults, 300); // Debounce API calls
+    return () => clearTimeout(debounceTimeout); // Cleanup timeout
+  }, [input, onSearchResults]);
+
   return (
-    <div className='search-bar-component'>
+    <div className='search-bar'>
       <input
-        placeholder='Type to search song...'
+        type='text'
+        placeholder='Search for a song...'
         value={input}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => {
+          console.log(`Input changed: ${e.target.value}`); // Debug log
+          setInput(e.target.value);
+        }}
       />
       <FaMagnifyingGlass id='search-icon' />
     </div>
