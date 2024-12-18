@@ -1,6 +1,6 @@
 .search-bar-component {
   background-color: white; /* Sets the background color of the search bar */
-  width: 20%; /* Defines the width of the search bar */
+  width: 25%; /* Defines the width of the search bar */
   margin: auto; /* Centers the search bar horizontally */
   border-radius: 20px; /* Rounds the corners of the search bar */
   height: 2.5rem; /* Sets the height of the search bar */
@@ -12,7 +12,7 @@
 
 input {
   border: none; /* Removes the border around the input */
-  font-size: 1.05rem; /* Increases the font size for better readability */
+  font-size: 0.80rem; /* Increases the font size for better readability */
   width: 100%; /* Ensures the input takes up all available width */
 }
 input:focus {
