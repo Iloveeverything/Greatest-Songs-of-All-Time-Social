@@ -1,14 +1,5 @@
 const Song = require('./models'); 
 
-// const songSchema = mongoose.Schema({
-//     song: { type: String, required: true, unique: false}, 
-//     artist: { type: String, required: true, unique: true}, 
-//     album: { type: String, required: true, unique: false }, 
-//     albumImageUrl: { type: String, required: true, unique: true },
-//     duration: { type: Number, required: true, unique: false },
-//     releaseDate: { type: String, required: true, unique: false }
-// }); 
-
 const controller = {
 
     addSong(req, res, next) {
@@ -44,10 +35,44 @@ const controller = {
 
     getSongs(req, res, next) {
 
+      Song.find({}, { _id: 0, __v: 0 })
+        .then((songs) => {
+          res.locals.getSongs = songs; 
+          return next(); 
+        })
+        .catch((err) => {
+          return next({
+            log: `Error retrieving songs from the database: ${err}`, 
+            status: 500, 
+            message: { err: 'Failed to retrieve songs from the database'}, 
+          });
+        });
     }, 
 
     deleteSong(req, res, next) {
 
+      const { song } = req.params; 
+      // console.log('This is the req obj from the deleteSong middleware', req); 
+      Song.deleteOne({ song })
+        .then((res) => {
+          // console.log('This is the res obj from the deleteSong middleware', res); 
+          if(res.acknowledged === true && res.deletedCount > 0) {
+            return next(); 
+          } else {
+            return next({
+              log: 'Unable to find song in the database', 
+              status: 404, 
+              message: { err: "Failed to find song in the database"}, 
+            }); 
+          }
+        })
+        .catch((err) => {
+          return next({
+            log: `Error deleting song from the database: ${err}`,
+            status: 500, 
+            message: { err: 'Failed to delete song from the database'}
+          });
+        });
     }, 
 
 }; 

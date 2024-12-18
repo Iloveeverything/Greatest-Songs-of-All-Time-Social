@@ -1,7 +1,7 @@
 const express = require('express'); 
 const controller = require('./controller')
 
-// instantiate a router for the /songs route
+// instantiate a router for the /playlist route
 const router = express.Router(); 
 
 // POST method route handler to add song to DB 
@@ -10,7 +10,7 @@ router.post('/', controller.addSong, (req, res) =>
 ); 
 
 // GET method route handler to get song data from the Spotify API 
-router.get('/:name', controller.api, (req, res) => 
+router.get('/:song', controller.api, (req, res) => 
     res.status(200).json({songs: res.locals.apiData})
 ); 
 
@@ -20,7 +20,7 @@ router.get('/', controller.getSongs, (req, res) =>
 ); 
 
 // DELETE method route handler to delete a song from the DB
-router.delete('/:name', controller.deleteSong, (req, res) => 
+router.delete('/:song', controller.deleteSong, (req, res) => 
     res.sendStatus(204)
 );
 
