@@ -71,7 +71,7 @@ const fetchTrack = async (req, res, next) => {
   const { song } = req.params;
   try {
     const accessToken = await getValidAccessToken(tokenExpiresAt, cachedToken);
-    console.log(song);
+    // console.log(song);
     const trackResult = await fetch(
       `https://api.spotify.com/v1/search?q=${encodeURIComponent(
         song
