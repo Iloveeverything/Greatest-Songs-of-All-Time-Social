@@ -75,7 +75,7 @@ const fetchTrack = async (req, res, next) => {
     const trackResult = await fetch(
       `https://api.spotify.com/v1/search?q=${encodeURIComponent(
         song
-      )}&type=track&offset=0`,
+      )}&type=track&limit=5&offset=0`,
       {
         method: 'GET',
         headers: { Authorization: `Bearer ${accessToken}` },
