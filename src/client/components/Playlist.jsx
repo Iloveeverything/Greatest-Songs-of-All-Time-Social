@@ -8,17 +8,19 @@ const Playlist = () => {
   }, []);
   const [playlist, setPlaylist] = useState([]);
   const getPaylist = async () => {
-    // const url: 'http://localhost:8080/playlist';
+    const url = '/playlist';
     // const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
 
-    // try {
-    //   const response = await fetch(url);
-    //   const jsonResponse = await response.json();
-    //   setPlaylist(jsonResponse.game_indices);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-    setPlaylist(fakeDB); //only for testing
+    try {
+      const response = await fetch(url);
+      console.log(response);
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      setPlaylist(jsonResponse.songs);
+    } catch (error) {
+      console.log(error);
+    }
+    // setPlaylist(fakeDB); //only for testing
   };
   return (
     <div className='playlist-component'>
