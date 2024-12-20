@@ -36,8 +36,6 @@ const controller = {
       });
   },
 
-  api(req, res, next) {},
-
   getSongs(req, res, next) {
     Song.find({}, { _id: 0, __v: 0 })
       .then((songs) => {
