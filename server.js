@@ -7,7 +7,6 @@ const PORT = 8080;
 
 const mongoose = require('mongoose');
 
-const controller = require('./src/server/controller'); // import controller
 const router = require('./src/server/routes'); // import router
 
 
