@@ -43,6 +43,7 @@ const SearchBar = (props) => {
     }
   };
   const postFetch = async (song) => {
+    setInput(''); 
     console.log(song);
     const data = {
       song: song.name,

@@ -14,7 +14,8 @@ input {
   border: none; /* Removes the border around the input */
   font-size: 0.80rem; /* Increases the font size for better readability */
   width: 100%; /* Ensures the input takes up all available width */
-}
+} 
+
 input:focus {
   outline: none; /* Removes the default browser outline when the input is focused */
 }

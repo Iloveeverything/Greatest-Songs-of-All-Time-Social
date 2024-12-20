@@ -8,14 +8,19 @@ import MainSection from './components/MainSection';
 
 const App = () => {
     return (
-        <div>
-            <h1 className="app-name">
-                {/* <img src={greatest} alt="logo" /> */}
-                Greatest Songs of All Time
-                </h1>
-            <MainSection />
+        <div className="main-div">
+            <header className="header">
+              <img  className="app-name" src={greatest} alt="logo" />
+            </header>
+            {/* <h1 className="app-name"> */}
+                {/* Greatest Songs of All Time */}
+                {/* </h1> */}
+            <main className="main">
+              <MainSection />
+              <div className="push"></div>
+            </main>
             <footer className="footer">
-                <p className="footer-p">&copy; <time dateTime="2024">2024</time> Greatest Songs of All Time</p>
+              <p className="footer-p">&copy; <time dateTime="2024">2024</time> Greatest Songs of All Time</p>
             </footer>
         </div>
     )

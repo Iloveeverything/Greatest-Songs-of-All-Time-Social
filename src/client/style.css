@@ -10,18 +10,29 @@ body {
   background-color: #fcfcf7;
 }
 
-.app-name {
-  text-align: center;
-  margin: 3em 0em 2em 0em; 
+.main {
+  min-height: 80vh;
+  margin-bottom: -80px;
 }
+
+.footer, .push {
+  height: 80px;
+}
+
+.app-name {
+  display: block;
+  margin: auto; 
+  padding: 2em 0em 2em 0em; 
+  width: 50%; 
+}
+
 /*contenedor principal de la app MainSection.jsx*/
 .MainSection {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5em; 
-  /* height: 100vh; */
+  gap: 3.5em; 
 }
 
 /*search-component*/
@@ -49,9 +60,14 @@ input:focus {
 
 .search-icon {
   color: rgb(40, 40, 40); 
+  border: none;
+  background: none;
+  padding: 0; 
+}
 
-  /* border: none; */
-  /* border-radius: 0.75em; */
+.search-icon:hover {
+  color:rgb(3, 89, 43); 
+  transform: scale(1.25); 
 }
 
 .dropdown {
@@ -75,6 +91,7 @@ input:focus {
 .dropdown-item:hover {
   background-color: #f1f1f1;
 }
+
 /* .error-message {
   color: red;
   margin-top: 10px;
@@ -85,6 +102,7 @@ input:focus {
   display: flex;
   flex-direction: column;
   padding: 1em 1em 1em 1em; 
+  margin: 0em 0em 0em 0em; 
   /* padding: 10px; */
   gap: 10px;
   border: 0.1em solid white;
@@ -102,7 +120,6 @@ input:focus {
   border: 0.1em solid #d3d3d3;
   border-radius: 0.75em;
   padding: 0.3em 1em 0.3em 1em;
-  /* width: 10px;  */
 }
 
 .songData {
@@ -153,7 +170,6 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: 10px; */
   margin: 0em 0em 0em 0em;
 }
 
@@ -168,8 +184,6 @@ input:focus {
   font-weight: 400;
   font-size: 1.1em;
   text-align: center;
+  padding: 1em 0em 0em 0em; 
 }
 
-.footer {
-  margin: 10em 0em 0em 0em;
-}
