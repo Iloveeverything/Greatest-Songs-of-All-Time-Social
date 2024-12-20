@@ -27,7 +27,7 @@ const controller = {
         return next();
       })
       .catch((err) => {
-        console.log('This is the err obj from the addSong middleware', err);
+        // console.log('This is the err obj from the addSong middleware', err);
         return next({
           log: `Error adding song to the database: ${err}`,
           status: 500,
