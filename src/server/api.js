@@ -14,6 +14,9 @@ let tokenExpiresAt = 0;
 
 //function to exchange client id and secret for token
 const getToken = async () => {
+
+  console.log(encodedCredentials);
+
   try {
     const result = await fetch('https://accounts.spotify.com/api/token', {
       method: 'POST',
