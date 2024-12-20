@@ -2,36 +2,174 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', serif;
 }
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   background-color: #fcfcf7;
 }
+
+.app-name {
+  text-align: center;
+  margin: 3em 0em 2em 0em; 
+}
 /*contenedor principal de la app MainSection.jsx*/
 .MainSection {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  gap: 5em; 
+  /* height: 100vh; */
 }
+
+/*search-component*/
+.search-bar {
+  position: relative;
+  background-color: white; /* Sets the background color of the search bar */
+  width: 40%; /* Defines the width of the search bar */
+  margin: auto; /* Centers the search bar horizontally */
+  border-radius: 20px; /* Rounds the corners of the search bar */
+  height: 2.5rem; /* Sets the height of the search bar */
+  padding: 0 15px; /* Adds horizontal padding inside the search bar */
+  box-shadow: 0px 0px 8px #ddd;
+  display: flex; /* Enables flexbox layout for the container */
+  align-items: center; /* Vertically centers the child elements */
+}
+
+input {
+  border: none; /* Removes the border around the input */
+  font-size: 0.8rem; /* Increases the font size for better readability */
+  width: 100%; /* Ensures the input takes up all available width */
+}
+input:focus {
+  outline: none; /* Removes the default browser outline when the input is focused */
+}
+
+.search-icon {
+  color: rgb(40, 40, 40); 
+
+  /* border: none; */
+  /* border-radius: 0.75em; */
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+/* .error-message {
+  color: red;
+  margin-top: 10px;
+} */
+
+/*playlist-component*/
 .playlist-component {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-    background-color: #F2DDBF;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em 1em 1em; 
+  /* padding: 10px; */
+  gap: 10px;
+  border: 0.1em solid white;
+  border-radius: 0.75em;
+  box-shadow: 0px 0px 8px rgb(107, 107, 107);
+  background-color: rgb(29, 29, 29);
 }
 
 .song-component {
   display: flex;
   gap: 20px;
-  background-color: #384F54;
+  background-color: #d3d3d3;
+  justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
+  border: 0.1em solid #d3d3d3;
+  border-radius: 0.75em;
+  padding: 0.3em 1em 0.3em 1em;
+  /* width: 10px;  */
 }
 
-.album-img{
-    width: 50px;
-    height: 50px    ;
+.songData {
+  display: flex;
+  flex-direction: row;
+  margin: 0em 0em 0em 0em; 
+}
+
+.song {
+  margin: 0.75em 1em 0em 1em; 
+  font-weight: 580;
+}
+
+.album {
+  margin: 0.75em 1em 0em 1em; 
+}
+
+.artist {
+  margin: 0.75em 1em 0em 1em; 
+}
+
+.date {
+  margin: 0.75em 1em 0em 1em; 
+}
+
+.duration {
+  margin: 0.75em 1em 0em 1em; 
+}
+
+.dash {
+  margin: 0.75em 0em 0em 0em; 
+}
+
+.album-img {
+  width: 50px;
+  height: 50px;
+  border: 0.1em solid #d3d3d3;
+  border-radius: 0.3em;
+}
+
+.close-button {
+  width: 15px;
+  height: 15px;
+  font-weight: 600;
+  border-radius: 50%;
+  border: 2px rgb(255, 96, 96) solid;
+  color: rgb(255, 96, 96);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 10px; */
+  margin: 0em 0em 0em 0em;
+}
+
+.close-button:hover {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* footer styling*/
+.footer-p {
+  font-weight: 400;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.footer {
+  margin: 10em 0em 0em 0em;
 }

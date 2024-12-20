@@ -1,31 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import SongComponent from './songComponent';
-import fakeDB from '../db.json';
 
-const Playlist = () => {
+const Playlist = (props) => {
   useEffect(() => {
     getPaylist();
   }, []);
   const [playlist, setPlaylist] = useState([]);
   const getPaylist = async () => {
     const url = '/playlist';
-    // const url = 'https://pokeapi.co/api/v2/pokemon/ditto';
-
     try {
       const response = await fetch(url);
-      console.log(response);
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       setPlaylist(jsonResponse.songs);
     } catch (error) {
       console.log(error);
     }
-    // setPlaylist(fakeDB); //only for testing
   };
+  const deleteSong = async (song) => {
+    try {
+      const response = await fetch(`/playlist/${song}`, {
+        method: 'DELETE',
+      });
+      alert('Song Deleted');
+      const newResponse = await fetch('/playlist');
+      const jsonResponse = await newResponse.json();
+      setPlaylist(jsonResponse.songs);
+    } catch (error) {
+      console.log('error trying to delete a song', error);
+      alert('Song could not be deleted');
+    }
+  };
+
+  const [stateFromSearchbar, setStateFromSearchbar] = useState();
+  useEffect(() => {
+    const updateComponent = async () => {
+      const newResponse = await fetch('/playlist');
+      const jsonResponse = await newResponse.json();
+      setPlaylist(jsonResponse.songs);
+    };
+    updateComponent();
+  }, stateFromSearchbar);
+
   return (
     <div className='playlist-component'>
       {playlist.map((song, index) => {
-        return <SongComponent key={index} data={song} />;
+        return <SongComponent key={index} data={song} func={deleteSong} />;
       })}
     </div>
   );
