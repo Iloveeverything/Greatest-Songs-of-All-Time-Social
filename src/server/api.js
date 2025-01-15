@@ -14,7 +14,6 @@ let tokenExpiresAt = 0;
 
 //function to exchange client id and secret for token
 const getToken = async () => {
-
   console.log(encodedCredentials);
 
   try {
@@ -88,7 +87,7 @@ const fetchTrack = async (req, res, next) => {
     }
     const trackData = await trackResult.json();
     const filteredData = trackData.tracks.items;
-    // console.log(`This is filtered data: ${filteredData}`);
+    console.log(`This is filtered data: ${filteredData}`);
 
     res.locals.apiData = filteredData;
     return next();
